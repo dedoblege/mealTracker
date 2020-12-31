@@ -1,5 +1,5 @@
 <template>
-  <footer class="footer">
+  <footer class="main-footer footer">
     <div class="footer__container">
       <div class="footer__element">
         <router-link to="/about">About</router-link>

@@ -13,29 +13,31 @@
 
 <script>
 export default {}
+
+//see https://www.positronx.io/vue-js-firebase-build-vue-crud-app-with-cloud-firestore/
 </script>
 
 <style scoped>
 .summary__container {
-  margin: 2rem 3rem 3rem 3rem;
+  margin: 1rem 2rem 2rem 2rem;
+  height: 100%;
   display: grid;
   grid-template-rows: 5rem auto;
-  grid-gap: 1.1rem;
+  grid-gap: 2rem;
   justify-items: start;
-  align-items: center;
 }
 
 .summary__title {
   font-family: var(--font-title), serif;
   font-size: 1.3rem;
+  justify-self: center;
 }
 
 .summary__list {
   display: grid;
-  grid-template-rows: 33% 33% 33%;
-  grid-gap: 1.1rem;
+  grid-template-rows: 7rem 7rem 7rem;
+  grid-gap: 1.3rem;
   justify-items: start;
-  align-items: center;
 }
 
 .summary__list-element {

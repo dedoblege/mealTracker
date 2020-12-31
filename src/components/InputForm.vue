@@ -3,22 +3,24 @@
     <div class="form__title">
       <h1>Add a meal</h1>
     </div>
-    <form class="form__content">
+    <form class="form__content" @submit.prevent="onFormSubmit">
       <div class="form__content-element">
         <input
           name="when"
           type="text"
           placeholder="MM/DD/YYYY"
           onfocus="(this.type='date')"
+          v-model="newMeal.date"
+          required
         />
       </div>
       <div class="form__content-element">
-        <select name="which">
+        <select name="which" v-model="newMeal.type" required>
           <option value="placeholder" id="default-which">Type of meal</option>
-          <option value="breakfast">Breakfast</option>
-          <option value="lunch">Lunch</option>
-          <option value="snack">Snack</option>
-          <option value="dinner">Dinner</option>
+          <option value="Breakfast">Breakfast</option>
+          <option value="Lunch">Lunch</option>
+          <option value="Snack">Snack</option>
+          <option value="Dinner">Dinner</option>
         </select>
       </div>
       <div class="form__content-element">
@@ -27,6 +29,8 @@
           rows="5"
           cols="30"
           placeholder="Describe your meal"
+          v-model="newMeal.content"
+          required
         ></textarea>
       </div>
       <div class="form__content-element">
@@ -37,8 +41,34 @@
 </template>
 
 <script>
+import { db } from "../firebaseDb"
 export default {
   name: "InputForm",
+  data() {
+    return {
+      newMeal: {
+        date: "",
+        type: "",
+        content: "",
+      },
+    }
+  },
+  methods: {
+    onFormSubmit(event) {
+      event.preventDefault()
+      db.collection("meals")
+        .add(this.newMeal)
+        .then(() => {
+          confirm("Meal successfully tracked!")
+          this.newMeal.date = ""
+          this.newMeal.type = ""
+          this.newMeal.content = ""
+        })
+        .catch((error) => {
+          console.log(error)
+        })
+    },
+  },
 }
 </script>
 
@@ -86,7 +116,7 @@ export default {
   font-size: 1.1rem;
   font-weight: 900;
   color: var(--light-shade-00);
-  background: var(--higlight-color);
+  background: var(--higlight-color-darker);
 }
 
 .form__content-element input:focus,

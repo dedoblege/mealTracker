@@ -1,9 +1,9 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto:100,400,900");
-@import url("https://fonts.googleapis.com/css?family=Anton");
-@import url("https://fonts.googleapis.com/css?family=Montserrat:400,700");
+/* @import url("https://fonts.googleapis.com/css?family=Anton"); */
+/* @import url("https://fonts.googleapis.com/css?family=Montserrat:400,700");
 @import url("https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap");
 /* --font-XX: "Nanum Pen Script"; */
-@import url("https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Acme&family=Bevan&family=Langar&family=Oleo+Script&family=Patua+One&family=Yeseva+One&display=swap");
+/*@import url("https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Acme&family=Bevan&family=Langar&family=Oleo+Script&family=Patua+One&family=Yeseva+One&display=swap"); */
 /* font-family: 'Abril Fatface', cursive;
 font-family: 'Acme', sans-serif;
 font-family: 'Bevan', cursive;
@@ -11,7 +11,7 @@ font-family: 'Langar', cursive;
 font-family: 'Oleo Script', cursive;
 font-family: 'Patua One', cursive;
 font-family: 'Yeseva One', cursive; */
-@import url("https://fonts.googleapis.com/css2?family=Vidaloka&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Vidaloka&display=swap"); */
 /* font-family: 'Vidaloka', serif; */
 @import url("https://fonts.googleapis.com/css2?family=Noto+Serif&display=swap");
 /* font-family: 'Noto Serif', serif; */
@@ -45,4 +45,23 @@ body {
   margin: 0;
   height: 100%;
   background-color: var(--light-shade-00, white);
+  display: grid;
+  grid-template-rows: 7.5vh auto 7.5vh;
+  grid-template-areas:
+    "header"
+    "main"
+    "footer";
+}
+
+.main {
+  grid-area: main;
+}
+
+.main-header {
+  grid-area: header;
+}
+
+.main-footer {
+  grid-area: footer;
+  align-self: end;
 }

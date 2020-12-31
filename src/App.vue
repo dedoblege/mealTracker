@@ -1,6 +1,6 @@
 <template>
   <the-header></the-header>
-  <div class="main__body">
+  <div class="main">
     <router-view />
   </div>
   <the-footer></the-footer>
@@ -24,8 +24,5 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-}
-.main__body {
-  height: 82vh;
 }
 </style>

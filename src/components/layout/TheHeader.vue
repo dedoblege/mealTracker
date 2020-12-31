@@ -1,5 +1,5 @@
 <template>
-  <header class="header">
+  <header class="main-header header">
     <div class="header__container">
       <div class="header__element" id="home">
         <router-link to="/">Home</router-link>
