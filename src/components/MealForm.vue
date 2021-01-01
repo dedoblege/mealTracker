@@ -1,9 +1,9 @@
 <template>
   <div class="form__container">
     <div class="form__title">
-      <h1>Add a meal</h1>
+      <h1>{{ title }}</h1>
     </div>
-    <form class="form__content" @submit.prevent="onFormSubmit">
+    <form class="form__content">
       <div class="form__content-element">
         <input
           name="when"
@@ -34,32 +34,97 @@
         ></textarea>
       </div>
       <div class="form__content-element">
-        <button class="form__content-btn">Submit</button>
+        <button
+          type="submit"
+          class="form__content__btn-main"
+          v-if="formType === createForm"
+          @click="onFormCreate"
+        >
+          Create
+        </button>
+        <button
+          type="submit"
+          class="form__content__btn-main"
+          v-if="formType === updateForm"
+          @click="onFormUpdate"
+        >
+          Update
+        </button>
+        <button
+          class="form__content__btn-delete"
+          v-if="formType === updateForm"
+          @click="onFormDelete"
+        >
+          Delete
+        </button>
       </div>
     </form>
   </div>
 </template>
 
 <script>
-import { db } from "../firebaseDb"
+import { mealsCollection } from "../firebaseDb"
 export default {
-  name: "InputForm",
+  name: "MealForm",
   data() {
     return {
+      selectedMeal: {
+        date: "",
+        type: "",
+        content: "",
+      },
       newMeal: {
         date: "",
         type: "",
         content: "",
       },
+      createForm: "create",
+      updateForm: "update",
+    }
+  },
+  props: {
+    title: String,
+    formType: String,
+  },
+  created() {
+    if (this.$route.params && this.$route.params.mealId) {
+      console.log("I have the id ")
+      console.log(this.$route.params.mealId)
+      // this.getMeal(this.$route.params.mealId)
+      this.getMeal()
+      console.log("selected meal")
+      console.log(this.selectedMeal.date)
+      console.log(this.selectedMeal.type)
+      console.log(this.selectedMeal.content)
     }
   },
   methods: {
-    onFormSubmit(event) {
+    // async getMeal(mealId) {
+    async getMeal() {
+      await mealsCollection
+        .where("type", "==", "Breakfast")
+        .onSnapshot((snapshotChange) => {
+          this.selectedMeal = []
+          snapshotChange.forEach((existingMeal) => {
+            this.selectedMeal.push({
+              id: existingMeal.id,
+              date: existingMeal.data().date,
+              type: existingMeal.data().type,
+              content: existingMeal.data().content,
+            })
+            console.log("existingMeal")
+            console.log(existingMeal.data().date)
+            console.log(existingMeal.data().type)
+            console.log(existingMeal.data().content)
+          })
+        })
+    },
+    async onFormCreate(event) {
       event.preventDefault()
-      db.collection("meals")
+      await mealsCollection
         .add(this.newMeal)
         .then(() => {
-          confirm("Meal successfully tracked!")
+          this.$toast.show("Meal successfully tracked!")
           this.newMeal.date = ""
           this.newMeal.type = ""
           this.newMeal.content = ""
@@ -94,7 +159,8 @@ export default {
 .form__content-element input,
 .form__content-element select,
 .form__content-element textarea,
-.form__content-btn {
+.form__content__btn-main,
+.form__content__btn-delete {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -111,7 +177,8 @@ export default {
   background: var(--light-shade-01);
 }
 
-.form__content-btn {
+.form__content__btn-main,
+.form__content__btn-delete {
   width: 60%;
   font-size: 1.1rem;
   font-weight: 900;
@@ -132,7 +199,8 @@ export default {
   .form__content-element input,
   .form__content-element select,
   .form__content-element textarea,
-  .form__content-btn {
+  .form__content__btn-main,
+  .form__content__btn-delete {
     margin: 1.5rem;
     padding: 1.5rem;
     border-radius: 50px;
@@ -146,7 +214,8 @@ export default {
   .form__content-element input,
   .form__content-element select,
   .form__content-element textarea,
-  .form__content-btn {
+  .form__content__btn-main,
+  .form__content__btn-delete {
     margin: 1.5rem;
     padding: 1.5rem;
     border-radius: 50px;

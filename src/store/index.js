@@ -1,9 +1,9 @@
 import { createStore } from "vuex"
-import helloModule from "./modules/hello/index.js"
+import dbModule from "./modules/db/index.js"
 
 const store = createStore({
   modules: {
-    coaches: helloModule,
+    coaches: dbModule,
   },
 })
 

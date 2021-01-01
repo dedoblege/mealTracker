@@ -1,13 +1,14 @@
 <template>
   <div class="history__container">
     <div class="history__title">
-      <h1>Meal history</h1>
+      <h1>{{ title }}</h1>
     </div>
     <div class="history__list">
       <div
         class="history__list-element"
         v-for="meal in savedMeals"
         :key="meal.id"
+        @click="goToUpdateMeal(meal.id)"
       >
         <div class="history__list__element-title">
           {{ meal.date }}
@@ -24,7 +25,7 @@
 </template>
 
 <script>
-import { db } from "../firebaseDb"
+import { mealsCollection } from "../firebaseDb"
 
 export default {
   data: function() {
@@ -32,18 +33,36 @@ export default {
       savedMeals: [],
     }
   },
+  props: {
+    title: String,
+    elementsToRetrieve: Number,
+  },
   created() {
-    db.collection("meals").onSnapshot((snapshotChange) => {
-      this.savedMeals = []
-      snapshotChange.forEach((meal) => {
-        this.savedMeals.push({
-          id: meal.id,
-          date: meal.data().date,
-          type: meal.data().type,
-          content: meal.data().content,
+    this.getHistoryMeals()
+  },
+  methods: {
+    async getHistoryMeals() {
+      await mealsCollection
+        .orderBy("date", "desc")
+        .limit(this.elementsToRetrieve)
+        .onSnapshot((snapshotChange) => {
+          this.savedMeals = []
+          snapshotChange.forEach((meal) => {
+            this.savedMeals.push({
+              id: meal.id,
+              date: meal.data().date,
+              type: meal.data().type,
+              content: meal.data().content,
+            })
+          })
         })
+    },
+    goToUpdateMeal(mealId) {
+      this.$router.push({
+        name: "MealUpdate",
+        params: { mealId: mealId },
       })
-    })
+    },
   },
 }
 </script>

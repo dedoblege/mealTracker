@@ -14,4 +14,8 @@ const firebaseApp = firebase.initializeApp(firebaseConfig)
 //TODO should I add next line??
 // firebase.analytics()
 
-export const db = firebaseApp.firestore()
+const db = firebaseApp.firestore()
+
+const mealsCollection = db.collection("meals")
+
+export { db, mealsCollection }

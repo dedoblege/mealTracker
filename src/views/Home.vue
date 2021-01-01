@@ -1,15 +1,20 @@
 <template>
-  <summary-list></summary-list>
-  <router-view />
+  <meals-list :title="pageTitle" :dataToRetrieve="maxElements"></meals-list>
 </template>
 
 <script>
-import SummaryList from "@/components/SummaryList.vue"
+import MealsList from "@/components/MealsList.vue"
 
 export default {
   name: "Home",
   components: {
-    SummaryList,
+    MealsList,
+  },
+  data: function() {
+    return {
+      pageTitle: "Last meals",
+      maxElements: 9,
+    }
   },
 }
 </script>

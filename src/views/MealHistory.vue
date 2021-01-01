@@ -1,14 +1,20 @@
 <template>
-  <historical-list></historical-list>
+  <meals-list :title="pageTitle" :dataToRetrieve="maxElements"></meals-list>
 </template>
 
 <script>
-import HistoricalList from "@/components/HistoricalList.vue"
+import MealsList from "@/components/MealsList.vue"
 
 export default {
   name: "MealHistory",
   components: {
-    HistoricalList,
+    MealsList,
+  },
+  data: function() {
+    return {
+      pageTitle: "Meals history",
+      maxElements: 50,
+    }
   },
 }
 </script>

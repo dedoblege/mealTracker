@@ -8,7 +8,7 @@
         <router-link to="/meal-history">History</router-link>
       </div>
       <div class="header__element">
-        <router-link to="/meal-input">Input</router-link>
+        <router-link to="/meal-creation">New meal</router-link>
       </div>
     </div>
   </header>
@@ -28,7 +28,7 @@ export default {}
 
 .header__container {
   display: grid;
-  grid-template-columns: 50% 25% 25%;
+  grid-template-columns: 40% 30% 30%;
   justify-items: end;
 }
 
