@@ -31,7 +31,7 @@ export default {}
 }
 
 .footer__element a {
-  color: var(--dark-shade-01);
+  color: var(--dark-shade-03);
   text-decoration: none;
 }
 

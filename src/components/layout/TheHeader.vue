@@ -2,7 +2,13 @@
   <header class="main-header header">
     <div class="header__container">
       <div class="header__element" id="home">
-        <router-link to="/">Home</router-link>
+        <router-link to="/">
+          <img
+            src="@/assets/logos/mini_logo.png"
+            alt="mini_logo"
+            class="header__logo"
+          />
+        </router-link>
       </div>
       <div class="header__element">
         <router-link to="/meal-history">History</router-link>
@@ -32,8 +38,13 @@ export default {}
   justify-items: end;
 }
 
+.header__logo {
+  height: 4.5vh;
+}
+
 #home {
   justify-self: start;
+  padding: 0.75rem;
 }
 
 .header__element {
@@ -41,7 +52,7 @@ export default {}
 }
 
 .header__element a {
-  color: var(--dark-shade-01);
+  color: var(--dark-shade-03);
   text-decoration: none;
   font-weight: 600;
 }
@@ -57,6 +68,21 @@ export default {}
 @media (min-width: 40rem) and (min-height: 40rem) {
   .header {
     height: 6.5vh;
+  }
+
+  .header__element a {
+    font-size: 1.2rem;
+  }
+}
+
+@media (min-width: 60rem) and (min-height: 60rem) {
+  .header {
+    height: 6.5vh;
+  }
+
+  .header__container {
+    grid-template-columns: 10% 10% auto;
+    justify-items: start;
   }
 
   .header__element a {

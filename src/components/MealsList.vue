@@ -1,25 +1,29 @@
 <template>
-  <div class="history__container">
-    <div class="history__title">
+  <div class="meals-list__container">
+    <div class="meals-list__title">
       <h1>{{ title }}</h1>
     </div>
-    <div class="history__list">
+    <div class="meals-list__list">
       <div
-        class="history__list-element"
+        class="meals-list__list-element"
         v-for="meal in savedMeals"
         :key="meal.id"
         @click="goToUpdateMeal(meal.id)"
       >
-        <div class="history__list__element-title">
+        <div class="meals-list__list__element-title">
           {{ meal.date }}
         </div>
-        <div class="history__list__element-content">
+        <div class="meals-list__list__element-content">
           <b>{{ meal.type }}</b>
         </div>
-        <div class="history__list__element-content">
+        <div class="meals-list__list__element-content">
           {{ meal.content }}
         </div>
       </div>
+    </div>
+    <div class="meals-list__buttons">
+      <base-button mode="generic__button">&lt; Previous</base-button>
+      <base-button mode="generic__button">Next &gt;</base-button>
     </div>
   </div>
 </template>
@@ -31,11 +35,11 @@ export default {
   data: function() {
     return {
       savedMeals: [],
+      pageSize: 12,
     }
   },
   props: {
     title: String,
-    elementsToRetrieve: Number,
   },
   created() {
     this.getHistoryMeals()
@@ -44,7 +48,7 @@ export default {
     async getHistoryMeals() {
       await mealsCollection
         .orderBy("date", "desc")
-        .limit(this.elementsToRetrieve)
+        .limit(this.pageSize)
         .onSnapshot((snapshotChange) => {
           this.savedMeals = []
           snapshotChange.forEach((meal) => {
@@ -68,48 +72,85 @@ export default {
 </script>
 
 <style scoped>
-.history__container {
-  margin: 1rem 2rem 2rem 2rem;
+.meals-list__container {
+  margin: 1rem 1.5rem 1.5rem 1.5rem;
   height: 100%;
   display: grid;
-  grid-template-rows: 5rem auto;
+  grid-template-rows: 5rem auto 5rem;
   grid-gap: 2rem;
   justify-items: start;
 }
 
-.history__title {
+.meals-list__title {
   font-family: var(--font-title), serif;
   font-size: 1.3rem;
   justify-self: center;
 }
 
-.history__list {
-  width: 90%;
+.meals-list__list {
+  width: 95%;
   justify-self: center;
 }
 
-.history__list-element {
+.meals-list__list-element {
   display: grid;
   grid-template-columns: 33% 66%;
   grid-template-rows: 40% 60%;
-  border-radius: 25px;
-  padding: 1.1rem;
-  margin: 1.8rem 0 1.8rem 0;
+  border-radius: 30px;
+  padding: 0.7rem;
+  margin: 1.1rem 0 1.1rem 0;
   background: var(--higlight-color);
 }
 
-.history__list__element-title {
+.meals-list__list__element-title {
   grid-column-start: 1;
   grid-column-end: 3;
   justify-self: center;
   font-size: 1.3rem;
   color: var(--dark-shade-02);
-  padding: 0.8rem 0.35rem 0.8rem 0.35rem;
+  padding: 0.1rem;
 }
 
-.history__list__element-content {
+.meals-list__list__element-content {
   justify-self: start;
-  font-size: 1.1rem;
-  padding: 0.8rem 0.35rem 0.8rem 0.35rem;
+  font-size: 1.2rem;
+  padding: 0.1rem;
+}
+
+.meals-list__buttons {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+
+@media (min-width: 40rem) and (min-height: 40rem) {
+  .meals-list__list {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-gap: 0.5rem;
+  }
+  .meals-list__list-element {
+    justify-self: center;
+    height: 15vh;
+    width: 38vw;
+  }
+}
+
+@media (min-width: 60rem) and (min-height: 60rem) {
+  .meals-list__container {
+    height: 90vh;
+  }
+
+  .meals-list__list {
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    grid-gap: 0.3rem;
+  }
+
+  .meals-list__list-element {
+    justify-self: center;
+    height: 15vh;
+    width: 20vw;
+  }
 }
 </style>

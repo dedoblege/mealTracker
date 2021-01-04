@@ -1,5 +1,5 @@
 <template>
-  <meals-list :title="pageTitle" :dataToRetrieve="maxElements"></meals-list>
+  <meals-list :title="pageTitle"></meals-list>
 </template>
 
 <script>
@@ -13,7 +13,6 @@ export default {
   data: function() {
     return {
       pageTitle: "Meals history",
-      maxElements: 50,
     }
   },
 }
