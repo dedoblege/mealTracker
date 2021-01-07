@@ -1,18 +1,19 @@
 <template>
-  <meals-list :title="pageTitle"></meals-list>
+  <meal-list :title="pageTitle" :pageSize="elementsInPage"></meal-list>
 </template>
 
 <script>
-import MealsList from "@/components/MealsList.vue"
+import MealList from "@/components/MealList.vue"
 
 export default {
   name: "MealHistory",
   components: {
-    MealsList,
+    MealList,
   },
   data: function() {
     return {
-      pageTitle: "Meals history",
+      pageTitle: "Meal history",
+      elementsInPage: 6,
     }
   },
 }

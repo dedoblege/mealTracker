@@ -14,10 +14,11 @@ export default {}
 
 <style scoped>
 .footer {
-  background-color: var(--light-shade-01);
+  background-color: var(--light-shade-015);
   width: 100%;
-  height: 7.5vh;
+  height: 3rem;
   font-family: var(--font-headers), sans-serif;
+  box-shadow: 2px -2px 5px var(--light-shade-02);
 }
 
 .footer__container {
@@ -31,20 +32,20 @@ export default {}
 }
 
 .footer__element a {
-  color: var(--dark-shade-03);
+  color: var(--dark-shade-005);
   text-decoration: none;
 }
 
 .footer__element a:hover,
 .footer__element a:active,
 .footer__element a.router-link-active {
-  color: var(--higlight-color-darker);
+  color: var(--higlight-color-dark-01);
   text-decoration: none;
 }
 
 @media (min-width: 40rem) and (min-height: 40rem) {
   .footer {
-    height: 6.5vh;
+    height: 3.5rem;
   }
 
   .footer__element a {

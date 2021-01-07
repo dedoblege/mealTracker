@@ -26,10 +26,11 @@ export default {}
 
 <style scoped>
 .header {
-  background-color: var(--light-shade-01);
+  background-color: var(--light-shade-015);
   width: 100%;
-  height: 7.5vh;
+  height: 3rem;
   font-family: var(--font-headers), sans-serif;
+  box-shadow: 2px 2px 5px var(--light-shade-02);
 }
 
 .header__container {
@@ -39,12 +40,12 @@ export default {}
 }
 
 .header__logo {
-  height: 4.5vh;
+  height: 2.2rem;
 }
 
 #home {
   justify-self: start;
-  padding: 0.75rem;
+  padding: 0.5rem;
 }
 
 .header__element {
@@ -52,7 +53,7 @@ export default {}
 }
 
 .header__element a {
-  color: var(--dark-shade-03);
+  color: var(--dark-shade-005);
   text-decoration: none;
   font-weight: 600;
 }
@@ -60,14 +61,17 @@ export default {}
 .header__element a:hover,
 .header__element a:active,
 .header__element a.router-link-active {
-  color: var(--higlight-color-darker);
+  color: var(--higlight-color-dark-01);
   text-decoration: none;
-  font-weight: 600;
 }
 
 @media (min-width: 40rem) and (min-height: 40rem) {
   .header {
-    height: 6.5vh;
+    height: 3.5rem;
+  }
+
+  .header__logo {
+    height: 2.8rem;
   }
 
   .header__element a {
@@ -76,10 +80,6 @@ export default {}
 }
 
 @media (min-width: 60rem) and (min-height: 60rem) {
-  .header {
-    height: 6.5vh;
-  }
-
   .header__container {
     grid-template-columns: 10% 10% auto;
     justify-items: start;

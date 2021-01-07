@@ -51,6 +51,10 @@ export default {
   align-self: center;
 }
 
+img {
+  height: 50vh;
+}
+
 .home__button {
   justify-self: center;
   align-self: start;

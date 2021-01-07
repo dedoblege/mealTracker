@@ -39,14 +39,25 @@ export default {
   padding: 1rem;
   border: none;
   border-radius: 30px;
-  font-family: var(--font-standard), sans-serif;
-  font-size: 1.3rem;
+  font-family: var(--font-headers), sans-serif;
+  font-size: 1.2rem;
   font-weight: 900;
-  color: var(--light-shade-00);
-  background: var(--higlight-color-darker);
+  color: var(--light-shade-01);
+  background: var(--higlight-color-dark-00);
   outline: none;
   text-decoration: none;
   justify-self: center;
+  box-shadow: 1px 1px 5px var(--dark-shade-02);
+}
+
+.generic__button:disabled {
+  color: var(--dark-shade-01);
+  background: var(--higlight-color-light-00);
+}
+
+.generic__button:hover,
+.generic__button:active {
+  box-shadow: 2px 2px 8px var(--dark-shade-00);
 }
 
 @media (min-width: 40rem) and (min-height: 40rem) {
@@ -54,8 +65,7 @@ export default {
     margin: 1.5rem;
     padding: 1.2rem;
     border-radius: 50px;
-    font-size: 1.2rem;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     width: 35vw;
   }
 }
@@ -66,7 +76,6 @@ export default {
     padding: 1.2rem;
     border-radius: 50px;
     font-size: 1.3rem;
-    font-size: 1.5rem;
     width: 25vw;
   }
 }
