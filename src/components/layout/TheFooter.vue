@@ -1,5 +1,5 @@
 <template>
-  <footer class="main-footer footer">
+  <footer>
     <div class="footer__container">
       <div class="footer__element">
         <router-link to="/about">About</router-link>
@@ -13,22 +13,19 @@ export default {}
 </script>
 
 <style scoped>
-.footer {
+footer {
   background-color: var(--light-shade-015);
   width: 100%;
-  height: 3rem;
+  height: 55px;
   font-family: var(--font-headers), sans-serif;
   box-shadow: 2px -2px 5px var(--light-shade-02);
 }
 
 .footer__container {
-  display: grid;
-  grid-template-columns: 100%;
-  justify-items: center;
-}
-
-.footer__element {
-  padding: 1rem;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .footer__element a {
@@ -44,10 +41,6 @@ export default {}
 }
 
 @media (min-width: 40rem) and (min-height: 40rem) {
-  .footer {
-    height: 3.5rem;
-  }
-
   .footer__element a {
     font-size: 1.2rem;
   }

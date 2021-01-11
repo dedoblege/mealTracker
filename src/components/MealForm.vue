@@ -1,7 +1,7 @@
 <template>
   <div class="form__container">
     <div class="form__title">
-      <h1>{{ title }}</h1>
+      {{ title }}
     </div>
     <form class="form__content">
       <div v-for="mealElement in mealData" :key="mealElement.id">
@@ -180,18 +180,19 @@ export default {
 
 <style scoped>
 .form__container {
-  margin: 2rem 3rem 3rem 3rem;
+  height: 100%;
   display: grid;
   grid-template-rows: 5rem auto;
   grid-gap: 0.5rem;
   justify-items: center;
   align-items: center;
-  height: 72.5vh;
 }
 
 .form__title {
   font-family: var(--font-title), serif;
-  font-size: 1.3rem;
+  font-size: 2.5rem;
+  font-weight: bold;
+  justify-self: center;
 }
 
 .form__content-element input,

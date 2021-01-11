@@ -17,11 +17,12 @@
 
 <style scoped>
 .about__container {
+  height: 100%;
   display: grid;
   grid-template-areas:
     "logo"
     "signature";
-  grid-template-rows: 60vh 25vh;
+  grid-template-rows: 70% 30%;
   align-items: center;
   justify-items: center;
 }
@@ -33,12 +34,13 @@
 }
 
 .about__content__logo-img {
-  height: 40vh;
+  height: 200px;
 }
 
 .about__content {
   grid-area: signature;
   font-size: 1.2rem;
+  align-self: start;
 }
 
 .heart {

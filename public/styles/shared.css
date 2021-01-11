@@ -4,16 +4,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
 
 :root {
-  /* --primary-color: #9fabe0;
-  --higlight-color: #c598af;
-  --higlight-color-dark-00: #a96789;
-  --dark-shade-00: #070b08;
-  --dark-shade-01: #3e4450;
-  --dark-shade-02: #4e5564;
-  --dark-shade-03: #7e88a0;
-  --light-shade-00: #eff0f3;
-  --light-shade-01: #c2c7d2;  
-   */
   --primary-color: #686d76;
   --primary-color-light-00: #777b83;
   --higlight-color: #13aab0;
@@ -33,34 +23,10 @@
   --font-title: "Noto Serif";
   --font-headers: "Amiko";
 }
-
-html {
-  height: 100%;
+* {
+  box-sizing: border-box;
 }
 
 body {
-  font-family: var(--font-standard), sans-serif;
-  color: var(--dark-shade-00);
   margin: 0;
-  height: 100%;
-  background-color: var(--light-shade-01, white);
-  display: grid;
-  grid-template-rows: 7.5vh auto 7.5vh;
-  grid-template-areas:
-    "header"
-    "main"
-    "footer";
-}
-
-.main {
-  grid-area: main;
-}
-
-.main-header {
-  grid-area: header;
-}
-
-.main-footer {
-  grid-area: footer;
-  align-self: end;
 }

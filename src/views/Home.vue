@@ -35,11 +35,12 @@ export default {
 
 <style scoped>
 .home__container {
+  height: 100%;
   display: grid;
   grid-template-areas:
     "logo logo"
     "btn-history btn-add_meal";
-  grid-template-rows: 70vh 15vh;
+  grid-template-rows: 80% 20%;
   grid-template-columns: 50% 50%;
 }
 
@@ -52,7 +53,7 @@ export default {
 }
 
 img {
-  height: 50vh;
+  width: 300px;
 }
 
 .home__button {
@@ -80,12 +81,13 @@ img {
 
 @media (min-width: 40rem) and (min-height: 40rem) {
   .home__container {
+    height: 100%;
     display: grid;
     grid-template-areas:
       "logo"
       "btn-history"
       "btn-add_meal";
-    grid-template-rows: 60vh 15vh 15vh;
+    grid-template-rows: 60% 20% 20%;
     grid-template-columns: 100%;
   }
 

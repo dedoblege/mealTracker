@@ -1,5 +1,7 @@
 <template>
-  <meal-list :title="pageTitle" :pageSize="elementsInPage"></meal-list>
+  <div class="history__container">
+    <meal-list :title="pageTitle" :pageSize="elementsInPage"></meal-list>
+  </div>
 </template>
 
 <script>
@@ -18,3 +20,8 @@ export default {
   },
 }
 </script>
+<style scoped>
+.history__container {
+  height: 100%;
+}
+</style>

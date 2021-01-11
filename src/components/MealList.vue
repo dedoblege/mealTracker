@@ -1,7 +1,7 @@
 <template>
   <div class="meal-list__container">
     <div class="meal-list__title">
-      <h1>{{ title }}</h1>
+      {{ title }}
     </div>
     <div class="meal-list__list">
       <div
@@ -159,22 +159,23 @@ export default {
 
 <style scoped>
 .meal-list__container {
-  margin: 1rem 1.5rem 1.5rem 1.5rem;
   height: 100%;
   display: grid;
-  grid-template-rows: 5rem auto 5rem;
-  grid-gap: 2rem;
+  grid-template-rows: 10% auto 10%;
+  grid-gap: 1.5rem;
   justify-items: start;
+  margin-bottom: 0.5rem;
 }
 
 .meal-list__title {
   font-family: var(--font-title), serif;
-  font-size: 1.3rem;
+  font-size: 2.5rem;
+  font-weight: bold;
   justify-self: center;
 }
 
 .meal-list__list {
-  width: 95%;
+  width: 90%;
   justify-self: center;
 }
 
@@ -220,6 +221,7 @@ export default {
   width: 100%;
   display: grid;
   grid-template-columns: 50% 50%;
+  align-self: start;
 }
 
 @media (min-width: 40rem) and (min-height: 40rem) {
@@ -231,17 +233,13 @@ export default {
 
   .meal-list__list-element {
     justify-self: center;
-    height: 12vh;
+    height: 20vh;
     width: 32vw;
     padding: 1.5rem;
   }
 }
 
 @media (min-width: 60rem) and (min-height: 60rem) {
-  .meal-list__container {
-    height: 90vh;
-  }
-
   .meal-list__list {
     display: grid;
     grid-template-columns: 33% 33% 33%;
@@ -249,10 +247,7 @@ export default {
   }
 
   .meal-list__list-element {
-    justify-self: center;
-    height: 12vh;
-    width: 20vw;
-    padding: 1.5rem;
+    width: 25vw;
   }
 }
 </style>
